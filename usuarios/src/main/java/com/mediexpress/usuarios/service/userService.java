@@ -24,6 +24,17 @@ public class userService {
     //buscar usuarios por id
     public user getUser(Long id){
         return UserRepository.findById(id)
-        .orElseThrow(()-> new RuntimeException("Cliente no encontrado"));
+        .orElseThrow(()-> new RuntimeException("Usuario no encontrado"));
     }
+
+    //crear usuarios
+    public user saveUser(user User){
+        return UserRepository.save(User);
+    }
+
+    //deletear
+    public void deleteUser(Long id){
+        UserRepository.deleteById(id);
+    }
+
 }
