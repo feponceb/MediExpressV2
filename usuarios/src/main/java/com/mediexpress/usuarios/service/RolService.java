@@ -18,7 +18,7 @@ public class RolService {
     
     
     //traer todos los roles
-    public List<Rol> getRol(){
+    public List<Rol> getRoles(){
         return rolRepository.findAll();
     }
 

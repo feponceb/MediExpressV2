@@ -18,7 +18,7 @@ public class EstadoService {
     private EstadoRepository estadoRepository;
 
     //traer todos los roles
-    public List<Estado> getEstado(){
+    public List<Estado> getEstados(){
         return estadoRepository.findAll();
     }
 
@@ -34,7 +34,7 @@ public class EstadoService {
     }
 
     //deletear
-    public void deleteRol(Long id){
+    public void deleteEstado(Long id){
         estadoRepository.deleteById(id);
     }
 
