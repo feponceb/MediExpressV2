@@ -12,19 +12,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mediexpress.usuarios.model.user;
-import com.mediexpress.usuarios.service.userService;
+import com.mediexpress.usuarios.model.Usuario;
+import com.mediexpress.usuarios.service.UsuarioService;
 
 @RestController
 @RequestMapping("/api/Usuarios")
-public class userController {
+public class UsuarioController {
     @Autowired
-    public userService UserService; 
+    public UsuarioService UserService; 
 
     //agarra todos los usuarios
     @GetMapping
-    public ResponseEntity<List<user>> obtenerUsers(){
-        List<user> users = UserService.getUsers();
+    public ResponseEntity<List<Usuario>> obtenerUsers(){
+        List<Usuario> users = UserService.getUsers();
         if(users.isEmpty()){
             return ResponseEntity.noContent().build();
         }
@@ -33,9 +33,9 @@ public class userController {
 
     //buscar por id
     @GetMapping("/{id}")
-    public ResponseEntity<user> obtenerUser(@PathVariable Long id){
+    public ResponseEntity<Usuario> obtenerUser(@PathVariable Long id){
         try{
-            user User = UserService.getUser(id);
+            Usuario User = UserService.getUser(id);
             return ResponseEntity.ok(User);
         } catch (Exception e){
             return ResponseEntity.notFound().build();
@@ -44,7 +44,7 @@ public class userController {
 
     //crear usuarios
     @PostMapping
-    public ResponseEntity<user> saveUser(@RequestBody user User){
+    public ResponseEntity<Usuario> saveUser(@RequestBody Usuario User){
         return ResponseEntity.status(201).body(UserService.saveUser(User));
     }
     
