@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idUsuario;
+    private long id;
 
     @Column(unique = true, nullable = false, length = 12)
     private String rut;
