@@ -1,5 +1,7 @@
 package com.mediexpress.autenticacion.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -70,6 +72,32 @@ public class UsuarioService {
         }
 
         return usuario;
+    }
+
+    //deletear por id
+    public void deleteById(Long id) {
+    Usuario usuario = usuarioRepository.findById(id)
+        .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+    usuarioRepository.delete(usuario);
+}
+
+
+    //deletear por rut
+    public void deleteByRut(String rut) {
+    Usuario usuario = usuarioRepository.findByRut(rut)
+        .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+    usuarioRepository.delete(usuario);
+    }
+
+    //traer todos los users
+    public List<Usuario> getUsers(){
+        return usuarioRepository.findAll();
+    }
+
+    //buscar usuarios por id
+    public Usuario getUser(Long id){
+        return usuarioRepository.findById(id)
+        .orElseThrow(()-> new RuntimeException("Usuario no encontrado"));
     }
 
 }
