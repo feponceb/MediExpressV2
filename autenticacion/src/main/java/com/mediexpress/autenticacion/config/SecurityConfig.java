@@ -12,7 +12,7 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/log/registro", "/api/log/login").permitAll()
+                .requestMatchers("/api/log/registro", "/api/log/login", "/api/log/**").permitAll()
                 .anyRequest().authenticated()
             )
             .httpBasic(httpBasic -> {});  // forma recomendada para httpBasic en la nueva sintaxis
