@@ -2,6 +2,8 @@ package com.mediexpress.autenticacion.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,4 +40,19 @@ public class autorizacionController {
         }
     }
 
+    @DeleteMapping("/id/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        usuarioService.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping("/rut/{rut}")
+    public ResponseEntity<Void> deleteByRut(@PathVariable String rut) {
+        try {
+            usuarioService.deleteByRut(rut);
+            return ResponseEntity.noContent().build(); 
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build(); 
+        }
+    }
 }
