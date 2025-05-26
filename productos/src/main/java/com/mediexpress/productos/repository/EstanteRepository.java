@@ -1,5 +1,12 @@
 package com.mediexpress.productos.repository;
 
-public interface EstanteRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.mediexpress.productos.model.Estante;
+
+@Repository
+public interface EstanteRepository extends JpaRepository<Estante, Long> {
+    
 
 }
