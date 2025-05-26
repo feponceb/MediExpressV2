@@ -16,7 +16,7 @@ import com.mediexpress.usuarios.model.Rol;
 import com.mediexpress.usuarios.service.RolService;
 
 @RestController
-@RequestMapping("/api/Rol")
+@RequestMapping("/api/rol")
 public class RolController {
     @Autowired
     public RolService rolService;

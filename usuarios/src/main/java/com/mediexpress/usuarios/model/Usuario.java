@@ -22,20 +22,23 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idUsuario;
 
-    @Column(nullable = false)
-    private String nombreUsuario;
+    @Column(unique = true, nullable = false, length = 12)
+    private String rut;
 
     @Column(nullable = false)
-    private String correoUsuario;
+    private String nombre;
 
     @Column(nullable = false)
-    private String passwordUsuario;
+    private String correo;
+
+    @Column(nullable = false)
+    private String password;
 
     @ManyToOne
-    @JoinColumn(name = "idEstado")
+    @JoinColumn(name = "idEstado", nullable = true)
     private Estado estado;
 
     @ManyToOne
-    @JoinColumn(name = "idRol")
+    @JoinColumn(name = "idRol", nullable = true)
     private Rol rol;
 }

@@ -3,7 +3,9 @@ package com.mediexpress.autenticacion.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
+import com.mediexpress.autenticacion.dto.gestorDeUsuarios;
 import com.mediexpress.autenticacion.model.Usuario;
 import com.mediexpress.autenticacion.repository.UsuarioRepository;
 
@@ -15,6 +17,9 @@ public class UsuarioService {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private RestTemplate restTemplate;
 
     private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
@@ -33,7 +38,26 @@ public class UsuarioService {
         String passwordEncriptada = passwordEncoder.encode(usuario.getPassword());
         usuario.setPassword(passwordEncriptada);
 
-        return usuarioRepository.save(usuario);
+        //guardando
+        Usuario saveUsuario1 = usuarioRepository.save(usuario); 
+
+        //sending to gestion de usuarios
+        gestorDeUsuarios dto = new gestorDeUsuarios(
+        saveUsuario1.getRut(),
+        saveUsuario1.getCorreo(),
+        saveUsuario1.getNombre(),
+        saveUsuario1.getPassword()
+    );
+
+    String urlGestion = "http://localhost:3245/api/usuarios";
+
+    try {
+        restTemplate.postForObject(urlGestion, dto, Void.class);
+    } catch (Exception e) {
+        System.err.println("Error al crear usuario en gestión: " + e.getMessage());
+    }
+
+    return saveUsuario1;
     }
 
     //Metodo Log in

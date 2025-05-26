@@ -1,6 +1,7 @@
 package com.mediexpress.usuarios.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,4 +39,9 @@ public class UsuarioService {
         UserRepository.deleteById(id);
     }
 
+    //buscar por rut
+    public Usuario findByRut(String rut) {
+        Optional<Usuario> usuarioOpt = UserRepository.findByRut(rut);
+        return usuarioOpt.orElse(null);
+    }
 }

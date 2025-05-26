@@ -16,7 +16,7 @@ import com.mediexpress.usuarios.model.Estado;
 import com.mediexpress.usuarios.service.EstadoService;
 
 @RestController
-@RequestMapping("/api/Estado")
+@RequestMapping("/api/estado")
 public class EstadoController {
     @Autowired
     public EstadoService estadoService;

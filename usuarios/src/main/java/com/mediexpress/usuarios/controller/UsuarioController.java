@@ -16,7 +16,7 @@ import com.mediexpress.usuarios.model.Usuario;
 import com.mediexpress.usuarios.service.UsuarioService;
 
 @RestController
-@RequestMapping("/api/Usuarios")
+@RequestMapping("/api/usuarios")
 public class UsuarioController {
     @Autowired
     public UsuarioService UserService; 
@@ -44,10 +44,25 @@ public class UsuarioController {
 
     //crear usuarios
     @PostMapping
-    public ResponseEntity<Usuario> saveUser(@RequestBody Usuario User){
-        return ResponseEntity.status(201).body(UserService.saveUser(User));
+    public ResponseEntity<Usuario> saveUser(@RequestBody Usuario user){
+        Usuario usuarioExistente = UserService.findByRut(user.getRut());
+    if (usuarioExistente != null) {
+        // Actualizar campos
+        usuarioExistente.setNombre(user.getNombre());
+        usuarioExistente.setCorreo(user.getCorreo());
+        usuarioExistente.setPassword(user.getPassword());
+        // más campos si hay...
+        Usuario actualizado = UserService.saveUser(usuarioExistente);
+        return ResponseEntity.ok(actualizado);
+    } else {
+        // Crear nuevo usuario
+        Usuario nuevoUsuario = UserService.saveUser(user);
+        return ResponseEntity.status(201).body(nuevoUsuario);
+        }
     }
     
+
+    //deleteo
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         UserService.deleteUser(id);
