@@ -1,6 +1,5 @@
-public class InventarioController {
-    @Autowired
-    private InventarioService inventarioService;
+package com.mediexpress.inventario.controller;
 
-    
+public class InventarioController {
+
 }

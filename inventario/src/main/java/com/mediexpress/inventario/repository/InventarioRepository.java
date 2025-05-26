@@ -1,3 +1,5 @@
-public class InventarioRepository {
+package com.mediexpress.inventario.repository;
+
+public interface InventarioRepository {
 
 }
