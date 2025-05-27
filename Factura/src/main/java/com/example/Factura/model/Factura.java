@@ -28,7 +28,7 @@ public class Factura
     @Column(nullable = false)
     private Long id_cli;
 
-    @OneToMany(mappedBy = "Factura", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "factura", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DetalleFactura> detalle;
     /*
     OTM → Uno a muchos
