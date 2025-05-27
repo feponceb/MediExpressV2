@@ -27,20 +27,16 @@ public class Producto {
     @Column(nullable = false)
     private String descripcion;
 
-    @Column(nullable = false)
-    private String categoria;
+    @Column(name = "id_categoria", nullable = false)
+    private Long idCategoria;
 
-    @Column(nullable = false)
-    private Double precio;
-
-    @Column(nullable = false)
-    private Integer stock;
+    @Column(name = "id_fila", nullable = false)
+    private Long idFila;
 
     @Column(nullable = false)
     private String unidad;
 
-    @Column(name = "fecha_exp")
-    private String fechaExp;
+
 
     
 }
