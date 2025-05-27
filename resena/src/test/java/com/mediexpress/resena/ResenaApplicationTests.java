@@ -1,10 +1,10 @@
-package com.mediexpress.resenas;
+package com.mediexpress.resena;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ResenasApplicationTests {
+class ResenaApplicationTests {
 
 	@Test
 	void contextLoads() {
