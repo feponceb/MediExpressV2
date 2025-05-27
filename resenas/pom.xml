@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.mediexpress</groupId>
-	<artifactId>resena</artifactId>
+	<artifactId>resenas</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>resena</name>
+	<name>resenas</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>

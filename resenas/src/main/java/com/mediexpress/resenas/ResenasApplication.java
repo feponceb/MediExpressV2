@@ -1,13 +1,13 @@
-package com.mediexpress.resena;
+package com.mediexpress.resenas;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ResenaApplication {
+public class ResenasApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ResenaApplication.class, args);
+		SpringApplication.run(ResenasApplication.class, args);
 	}
 
 }
