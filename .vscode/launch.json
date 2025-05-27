@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "FacturaApplication",
+            "request": "launch",
+            "mainClass": "com.example.Factura.FacturaApplication",
+            "projectName": "Factura"
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-UsuariosApplication<usuarios>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
